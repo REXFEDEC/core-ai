@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/theme-init.js"></script>
+    <title>Complete Rankings - FactorSphere</title>
+    <link rel="icon" type="image/svg+xml" href="../../src/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="page-container">
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../../src/img/logo_cr.png" alt="FactorSphere Logo" class="nav-logo">
+                <div class="logo-text">
+                    <h1>FactorSphere</h1>
+                    <p>Complete Rankings</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="../../index.html">Back to Rankings</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="rankings-page">
+        <div class="rankings-header">
+            <h1>Complete Journal Rankings</h1>
+            <p>Journals ranked by Impact Factor</p>
+        </div>
+
+        <div class="rankings-container">
+            <div id="journalsList" class="journals-list">
+                <!-- JavaScript will populate this -->
+            </div>
+        </div>
+
+        <div class="data-source">
+            <small>*sourced from ooir.org</small>
+        </div>
+    </main>
+
+    <script src="../js/the_list.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

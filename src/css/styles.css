@@ -1077,17 +1077,73 @@ main {
     }
 }
 
-/* Additional Variables */
-:root {
-    --scrollbar: rgba(155, 155, 155, 0.5);
-    --scrollbar-bg: rgba(0, 0, 0, 0.1);
+/* Complete Rankings List Styling */
+.rankings-container {
+    background: var(--color-canvas-default);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-ambient);
+    border: 1px solid var(--color-border-subtle);
 }
 
-[data-theme="dark"] {
-    --scrollbar: rgba(155, 155, 155, 0.3);
-    --scrollbar-bg: rgba(0, 0, 0, 0.2);
+.journal-row {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+    transition: var(--transition-default);
+    background: var(--color-canvas-default);
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 1rem;
+    align-items: center;
 }
 
+.journal-row:hover {
+    background: var(--color-canvas-subtle);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+    position: relative;
+    z-index: 1;
+}
+
+.journal-row:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: var(--border-radius-large);
+    border-bottom-right-radius: var(--border-radius-large);
+}
+
+.journal-row:first-child {
+    border-top-left-radius: var(--border-radius-large);
+    border-top-right-radius: var(--border-radius-large);
+}
+
+.rank {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.journal-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--color-fg-default);
+}
+
+.metrics {
+    text-align: right;
+}
+
+.if-score {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-accent-fg);
+    margin-bottom: 0.25rem;
+}
+
+.citations {
+    font-size: 0.9rem;
+    color: var(--color-fg-muted);
+}
 .page-container {
     min-height: 100vh;
     display: flex;
@@ -1103,4 +1159,45 @@ main {
     font-size: 0.8rem;
     margin-top: 0.5rem;
     padding-right: 0.5rem;
+}
+
+/* Rankings Page Layout */
+.rankings-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .rankings-page {
+        display: grid;
+        grid-template-columns: 280px 1fr; /* Reduced from 300px */
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .rankings-header {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+    }
+
+    .rankings-container {
+        overflow-y: auto;
+        max-height: calc(100vh - 100px);
+    }
+}
+
+/* Keep existing styles */
+.rankings-header {
+    margin-bottom: 2rem;
+}
+
+.rankings-header h1 {
+    color: var(--color-fg-default);
+    margin-bottom: 0.5rem;
+}
+
+.rankings-header p {
+    color: var(--color-fg-muted);
 }
