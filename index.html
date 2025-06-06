@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/js/theme-init.js"></script>
+    <title>FactorSphere - Transparent Journal Rankings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="src/img/favicon.svg">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="src/img/logo_cr.png" alt="FactorSphere Logo" class="nav-logo">
+                <div class="logo-text">
+                    <h1>FactorSphere</h1>
+                    <p>Community-Driven Journal Rankings</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <div class="search-nav">
+                    <input type="text" id="journalSearch" placeholder="Search journals...">
+                    <button type="button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="src/ever/us.html">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="rankings-section">
+            <h2><i class="fas fa-chart-line"></i> Top Ranked Journals</h2>
+            <div class="rankings-grid">
+                <!-- Rankings will be populated here via JavaScript -->
+            </div>
+        </section>
+
+        <section class="lists-section">
+            <h2><i class="fas fa-list"></i> Popular Lists</h2>
+            <div class="lists-grid">
+                <!-- Lists will be populated here via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>OpenFactor is an open-source project. All data is community-contributed and verified.</p>
+        <p>Licensed under MIT License - <a href="https://github.com/FactorSphere/core">Contribute on GitHub</a></p>
+    </footer>
+
+    <template id="journalTemplate">
+        <div class="journal-card">
+            <h3 class="journal-title"></h3>
+            <div class="journal-meta">
+                <span class="issn"></span>
+                <span class="field"></span>
+            </div>
+            <div class="journal-metrics">
+                <div class="impact-score"></div>
+                <div class="citations"></div>
+                <div class="acceptance-rate"></div>
+            </div>
+            <div class="last-updated"></div>
+        </div>
+    </template>
+
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h2>Search Journals</h2>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-modal-body">
+                <div class="search-input-wrapper">
+                    <input type="text" id="modalJournalSearch" placeholder="Search by journal name, field, or ISSN...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="search-filters">
+                    <select id="fieldFilter">
+                        <option value="">All Fields</option>
+                    </select>
+                    <select id="sortBy">
+                        <option value="impact">Sort by Impact</option>
+                        <option value="name">Sort by Name</option>
+                        <option value="recent">Sort by Recent</option>
+                    </select>
+                </div>
+                <div id="searchResults" class="search-results">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/main.js"></script>
+</body>
+</html>

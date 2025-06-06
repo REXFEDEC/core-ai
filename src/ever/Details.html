@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/theme-init.js"></script>
+    <title>Journal Details - FactorSphere</title>
+    <link rel="icon" type="image/svg+xml" href="../../src/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        console.log('Details page loaded, URL:', window.location.href); // Debug log
+    </script>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../../src/img/logo_cr.png" alt="FactorSphere Logo" class="nav-logo">
+                <div class="logo-text">
+                    <h1>FactorSphere</h1>
+                    <p>Journal Details</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="../../index.html">Back to Rankings</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="details-page">
+        <div class="left-column">
+            <div class="journal-header">
+                <h1 id="journalTitle">Loading...</h1>
+                <div id="journalBasics" class="journal-basics">
+                    <span id="issn"></span>
+                    <span id="publisher"></span>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card" title="SCImago Journal Rank">
+                    <h3>SJR Score</h3>
+                    <div id="sjrScore" class="metric-value">-</div>
+                </div>
+                <div class="metric-card" title="Total number of citations">
+                    <h3>Citations</h3>
+                    <div id="citedByCount" class="metric-value">-</div>
+                </div>
+                <div class="metric-card" title="H-index measures productivity and citation impact">
+                    <h3>H-index</h3>
+                    <div id="hIndex" class="metric-value">-</div>
+                </div>
+                <div class="metric-card" title="Best quartile ranking">
+                    <h3>Best Quartile</h3>
+                    <div id="bestQuartile" class="metric-value">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="details-grid">
+                <section class="details-card">
+                    <h2>Publication Metrics</h2>
+                    <div id="publicationMetrics"></div>
+                </section>
+                <section class="details-card">
+                    <h2>Categories & Disciplines</h2>
+                    <div id="categories"></div>
+                </section>
+                <section class="details-card">
+                    <h2>Additional Information</h2>
+                    <div id="additionalInfo"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/details.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
