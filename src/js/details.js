@@ -77,7 +77,7 @@ async function displayJournalDetails(journal) {
     document.getElementById('sjrScore').textContent = journal.SCIMAGO_SJR?.toLocaleString() || 'N/A';
     document.getElementById('citedByCount').textContent = journal['OA_Cited By Count']?.toLocaleString() || 'N/A';
     document.getElementById('hIndex').textContent = journal['SCIMAGO_H index'] || 'N/A';
-    document.getElementById('bestQuartile').textContent = journal['SCIMAGO_SJR Best Quartile'] || 'N/A';
+    document.getElementById('impactFactor').textContent = journal.OOIR_IF?.toFixed(2) || 'N/A';
 
     // Publication metrics
     const publicationMetrics = document.getElementById('publicationMetrics');
@@ -121,10 +121,18 @@ async function displayJournalDetails(journal) {
             
             <dt>Coverage Years</dt>
             <dd>${journal.SCIMAGO_Coverage || 'N/A'}</dd>
-            
-            <dt>Homepage</dt>
-            <dd>${journal.OA_Homepage ? `<a href="${journal.OA_Homepage}" target="_blank">Visit Journal</a>` : 'N/A'}</dd>
         </dl>
+        ${journal.OA_Homepage ? `
+            <div style="margin-top: 1.5rem;">
+                <a href="${journal.OA_Homepage}" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="journal-link-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit Journal Website
+                </a>
+            </div>
+        ` : ''}
     `;
 }
 

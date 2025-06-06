@@ -1,25 +1,41 @@
 # FactorSphere
 
-FactorSphere is an open-source platform that provides transparent, community-driven journal rankings and impact metrics.
+FactorSphere is a personal project aimed at democratizing academic journal rankings through transparent, community-driven metrics. Born out of frustration with closed-source impact factors and opaque ranking methodologies, this platform provides researchers with clear, accessible journal metrics.
 
-## Features
+## Core Features
 
-- 📊 Community-driven journal rankings
-- 🔍 Real-time search and filtering
-- 🌗 Dark/Light theme support
-- 📱 Responsive design
-- 🔒 Transparent methodology
-- 🤝 Open-source collaboration
+### 📊 Transparent Rankings
+- Open-source impact factor calculations
+- Community-verified data
+- Real-time metric updates
+- Multi-source ranking aggregation
 
-## Getting Started
+### 🔍 Smart Search & Filtering
+- Instant journal search
+- Field-specific filtering
+- Advanced sorting options
+- Citation metrics integration
 
-1. Clone the repository:
-```bash
-git clone https://github.com/FactorSphere/core.git
-cd core
-```
+### 🎨 Modern Interface
+- Responsive design for all devices
+- Dark/Light theme support
+- Clean, GitHub-inspired aesthetics
+- Accessibility-focused UI
 
-2. Open `index.html` in your browser to view the site locally.
+### 📈 Comprehensive Metrics
+- Impact Factor (sourced from OOIR.org)
+- SCImago Journal Rank (SJR)
+- H-index tracking
+- Citation analytics
+
+## Technology Stack
+
+- **Frontend**: Vanilla JavaScript (ES6+)
+- **Styling**: Custom CSS with CSS Variables
+- **Data**: JSON-based storage
+- **Icons**: Font Awesome 6.0
+- **Typography**: Google's Rubik font family
+- **Theme**: GitHub-inspired design system
 
 ## Project Structure
 
@@ -27,45 +43,79 @@ cd core
 factorsphere/
 ├── src/
 │   ├── css/
-│   │   └── styles.css
+│   │   └── styles.css          # Global styles & theme variables
 │   ├── js/
-│   │   ├── main.js
-│   │   └── theme.js
+│   │   ├── main.js            # Core functionality & search
+│   │   ├── details.js         # Journal details page logic
+│   │   └── theme-init.js      # Theme initialization
 │   ├── data/
-│   │   └── journals.json
-│   ├── ever/
-│   │   └── us.html
-│   └── index.html
-└── README.md
+│   │   ├── factorsphere_data.json  # Journal database
+│   │   └── dictionary.csv     # Field definitions
+│   ├── img/
+│   │   ├── favicon.svg        # Site favicon
+│   │   ├── logo_cr.png       # Circular logo
+│   │   └── logo.png          # Full logo
+│   └── ever/
+│       ├── Details.html      # Journal details page
+│       └── us.html           # About page
+└── index.html               # Main entry point
 ```
 
 ## Contributing
 
-We welcome contributions from the academic community! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more information.
+I welcome contributions from fellow researchers and developers! Here's how you can help:
 
-### Development Setup
+### Data Contributions
+1. Verify existing journal metrics
+2. Submit new journal data
+3. Report inconsistencies
+4. Suggest additional metrics
 
+### Code Contributions
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+2. Create a descriptive branch
+3. Implement your changes
+4. Test thoroughly
+5. Submit a pull request with details
 
-## Data Sources
+### Design & UX
+- Suggest UI improvements
+- Report accessibility issues
+- Propose new features
+- Share user feedback
 
-Journal data is community-contributed and verified through a peer review process. Our methodology for calculating impact metrics is transparent and documented.
+## Data Sources & Methodology
+
+### Current Sources
+- OpenAlex API for citation metrics
+- SCImago Journal Rank (SJR)
+- OOIR.org for Impact Factors
+- Community-contributed data
+
+### Verification Process
+1. Automated data validation
+2. Cross-reference checking
+3. Community peer review
+4. Regular updates
+
+## Vision
+
+FactorSphere aims to become the go-to platform for transparent journal metrics. By combining open data with community verification, we're building a more equitable academic publishing landscape.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
+## Contact & Support
 
-- GitHub: [@REXFEDEC](https://github.com/REXFEDEC)
-- Project Link: [https://github.com/FactorSphere/core](https://github.com/FactorSphere/core)
+- Created by: [@REXFEDEC](https://github.com/REXFEDEC)
+- Issues & Features: [GitHub Issues](https://github.com/FactorSphere/core/issues)
+- Project Homepage: [https://github.com/FactorSphere/core](https://github.com/FactorSphere/core)
 
 ## Acknowledgments
 
-- Built with vanilla JavaScript
-- Styling inspired by GitHub's design system
-- Uses Font Awesome for icons
-- Google's Rubik font family
+Special thanks to:
+- The academic community for data contributions
+- Open-source metric providers
+- GitHub's design system for inspiration
+- All contributors and supporters

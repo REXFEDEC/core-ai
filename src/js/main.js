@@ -183,21 +183,16 @@ function loadJournalRankings(dictionary) {
 function displayJournalRankings(journals, dictionary) {
     const rankingsContainer = document.querySelector('.rankings-grid');
     const listsContainer = document.querySelector('.lists-grid');
-    if (!rankingsContainer || !listsContainer) return;
-    
-    // Clear containers
-    rankingsContainer.innerHTML = '';
-    listsContainer.innerHTML = '';
 
-    // Sort journals by SCIMAGO_Rank for rankings section
+    // Sort by Impact Factor
     const topRanked = [...journals]
-        .filter(j => j.SCIMAGO_Rank)
-        .sort((a, b) => a.SCIMAGO_Rank - b.SCIMAGO_Rank)
+        .filter(j => j.OOIR_IF)
+        .sort((a, b) => b.OOIR_IF - a.OOIR_IF)
         .slice(0, 20);
 
-    // Sort journals by citations for popular lists
+    // Keep citations sorting for popular lists
     const mostCited = [...journals]
-        .filter(j => j['OA_Cited By Count']) // Fixed property name
+        .filter(j => j['OA_Cited By Count'])
         .sort((a, b) => b['OA_Cited By Count'] - a['OA_Cited By Count'])
         .slice(0, 20);
 
@@ -218,52 +213,43 @@ function createJournalCard(journal, isRanking, dictionary) {
     const journalElement = document.createElement('div');
     journalElement.classList.add('journal-card');
     
-    const getFieldDisplay = (fieldName) => {
-        const dict = dictionary[fieldName] || { short: fieldName, full: fieldName };
-        return `<span title="${dict.full}">${dict.short}</span>`;
-    };
-    
     journalElement.innerHTML = `
         <h3 class="journal-title">
-            ${isRanking ? `#${journal.SCIMAGO_Rank} - ` : ''}
-            ${journal['OA_Journal Name'] || journal.SCIMAGO_Title}
+            ${journal['OA_Journal Name']}
         </h3>
         <div class="journal-meta">
             <span class="issn" title="${dictionary['OA_ISSN-L'].full}">
-                ${getFieldDisplay('OA_ISSN-L')}: ${journal['OA_ISSN-L'] || journal.SCIMAGO_Issn}
+                ${dictionary['OA_ISSN-L'].short}: ${journal['OA_ISSN-L']}
             </span>
             <span class="field" title="${dictionary['SCIMAGO_Categories'].full}">
-                ${getFieldDisplay('SCIMAGO_Categories')}: ${journal.SCIMAGO_Categories || journal.OA_Discipline}
+                ${dictionary['SCIMAGO_Categories'].short}: ${journal.SCIMAGO_Categories || 'N/A'}
             </span>
         </div>
         <div class="journal-metrics">
             ${isRanking ? `
-                <div class="impact-score" title="${dictionary['SCIMAGO_SJR'].full}">
+                <div class="impact-score" title="${dictionary['OOIR_IF'].full}">
                     <i class="fas fa-chart-line"></i>
-                    ${getFieldDisplay('SCIMAGO_SJR')}: ${journal.SCIMAGO_SJR || 'N/A'}
+                    ${dictionary['OOIR_IF'].short}: ${journal.OOIR_IF?.toFixed(2) || 'N/A'}
                 </div>
             ` : `
                 <div class="citations" title="${dictionary['OA_Cited By Count'].full}">
                     <i class="fas fa-quote-right"></i>
-                    ${getFieldDisplay('OA_Cited By Count')}: ${journal['OA_Cited By Count']?.toLocaleString() || 'N/A'}
+                    ${dictionary['OA_Cited By Count'].short}: ${journal['OA_Cited By Count']?.toLocaleString() || 'N/A'}
                 </div>
             `}
             <div class="h-index" title="${dictionary['SCIMAGO_H index'].full}">
                 <i class="fas fa-chart-bar"></i>
-                ${getFieldDisplay('SCIMAGO_H index')}: ${journal['SCIMAGO_H index'] || 'N/A'}
+                ${dictionary['SCIMAGO_H index'].short}: ${journal['SCIMAGO_H index'] || 'N/A'}
             </div>
         </div>
         <div class="last-updated" title="${dictionary['SCIMAGO_Coverage'].full}">
             <i class="fas fa-clock"></i>
-            ${getFieldDisplay('SCIMAGO_Coverage')}: ${journal.SCIMAGO_Coverage || 'N/A'}
+            ${dictionary['SCIMAGO_Coverage'].short}: ${journal.SCIMAGO_Coverage || 'N/A'}
         </div>
     `;
-    
-    // Add click handler to navigate to details page
+
     journalElement.addEventListener('click', () => {
-        const journalId = journal['OA_ISSN-L'];
-        console.log('Navigating to journal:', journalId); // Debug log
-        window.location.href = `./src/ever/Details.html?id=${encodeURIComponent(journalId)}`;
+        window.location.href = `src/ever/Details.html?id=${encodeURIComponent(journal['OA_ISSN-L'])}`;
     });
 
     return journalElement;
