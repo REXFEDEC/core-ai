@@ -90,6 +90,22 @@ I welcome contributions from fellow researchers and developers! Here's how you c
 - Propose new features
 - Share user feedback
 
+## Community Discussions
+
+Join our [GitHub Discussions](https://github.com/FactorSphere/core/discussions) to:
+- Ask questions and get help
+- Share ideas and feedback
+- Discuss journal metrics
+- Connect with other researchers
+- Stay updated on project news
+
+### Discussion Categories
+- 📣 Announcements
+- 💡 Ideas & Feature Requests
+- 🙏 Q&A
+- 🌟 Show and Tell
+- 🔧 Data Updates
+
 ## Data Sources & Methodology
 
 ### Current Sources
