@@ -62,11 +62,11 @@ function updateThemeIcon(theme) {
 function initializeSearch() {
     const searchButton = document.getElementById('searchButton');
     const searchModal = document.getElementById('searchModal');
-    const closeModal = document.querySelector('.close-modal');
     const modalSearch = document.getElementById('modalJournalSearch');
-    const fieldFilter = document.getElementById('fieldFilter');
-    const sortBy = document.getElementById('sortBy');
-    const searchResults = document.getElementById('searchResults');
+    const closeModal = document.getElementById('closeModal');
+
+    // Set initial state
+    searchModal.style.display = 'none';
 
     if (!searchModal || !searchButton) return;
 
