@@ -112,31 +112,31 @@ function initializeSearch() {
     fieldFilter?.addEventListener('change', handleSearch);
     sortBy?.addEventListener('change', handleSearch);
 
-    // Open modal
+    // Open modal - Change this part
     searchButton.addEventListener('click', () => {
-        searchModal.classList.add('active');
+        searchModal.style.display = 'flex';  // Use 'flex' instead of classList
         modalSearch.focus();
         document.body.style.overflow = 'hidden';
     });
 
-    // Close modal
+    // Close modal - Change these parts
     closeModal?.addEventListener('click', () => {
-        searchModal.classList.remove('active');
+        searchModal.style.display = 'none';  // Use 'none' instead of classList
         document.body.style.overflow = '';
     });
 
     // Close on outside click
     searchModal.addEventListener('click', (e) => {
         if (e.target === searchModal) {
-            searchModal.classList.remove('active');
+            searchModal.style.display = 'none';  // Use 'none' instead of classList
             document.body.style.overflow = '';
         }
     });
 
     // Close on escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && searchModal.classList.contains('active')) {
-            searchModal.classList.remove('active');
+        if (e.key === 'Escape' && searchModal.style.display === 'flex') {
+            searchModal.style.display = 'none';  // Use 'none' instead of classList
             document.body.style.overflow = '';
         }
     });
