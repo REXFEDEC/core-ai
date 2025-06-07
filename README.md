@@ -1,5 +1,11 @@
 # FactorSphere
 
+<div align="center">
+
+### 🔎 [Explore Journal Rankings](https://factorsphere.github.io/core) | ⭐ [Star Project](https://github.com/FactorSphere/core) | 📊 [View Data](https://github.com/FactorSphere/core/tree/main/src/data)
+
+</div>
+
 FactorSphere is a personal project aimed at democratizing academic journal rankings through transparent, community-driven metrics. Born out of frustration with closed-source impact factors and opaque ranking methodologies, this platform provides researchers with clear, accessible journal metrics.
 
 ## Core Features
