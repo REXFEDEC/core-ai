@@ -142,6 +142,54 @@ function initializeSearch() {
     });
 }
 
+// Populate field filter with unique fields from journals
+function populateFieldFilter(journals) {
+    const fieldFilter = document.getElementById('fieldFilter');
+    const fields = new Set();
+    
+    journals.forEach(journal => {
+        if (journal.SCIMAGO_Categories) {
+            const categories = journal.SCIMAGO_Categories.split(';');
+            categories.forEach(category => fields.add(category.trim()));
+        }
+    });
+
+    const sortedFields = Array.from(fields).sort();
+    
+    fieldFilter.innerHTML = `
+        <option value="">All Fields</option>
+        ${sortedFields.map(field => `<option value="${field}">${field}</option>`).join('')}
+    `;
+}
+
+// Update search results filtering
+function filterJournals(searchTerm, field, sortBy) {
+    const results = journals.filter(journal => {
+        const matchesSearch = journal['OA_Journal Name']?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            journal['OA_ISSN-L']?.includes(searchTerm) ||
+                            journal.SCIMAGO_Categories?.toLowerCase().includes(searchTerm.toLowerCase());
+        
+        const matchesField = !field || journal.SCIMAGO_Categories?.includes(field);
+        
+        return matchesSearch && matchesField;
+    });
+
+    // Sort results
+    switch(sortBy) {
+        case 'impact':
+            results.sort((a, b) => (b.OOIR_IF || 0) - (a.OOIR_IF || 0));
+            break;
+        case 'name':
+            results.sort((a, b) => a['OA_Journal Name']?.localeCompare(b['OA_Journal Name']));
+            break;
+        case 'recent':
+            results.sort((a, b) => new Date(b['OA_Last Status Check']) - new Date(a['OA_Last Status Check']));
+            break;
+    }
+
+    return results;
+}
+
 // Update loadJournalRankings to store data globally
 function loadJournalRankings(dictionary) {
     // Get current page path to determine correct data path
@@ -164,6 +212,7 @@ function loadJournalRankings(dictionary) {
             journalsData = data.filter(j => Object.keys(j).length > 1); // Store valid journals globally
             console.log('Data loaded, entries:', journalsData.length);
             displayJournalRankings(journalsData, dictionary);
+            populateFieldFilter(journalsData); // Populate fields after data load
         })
         .catch(error => {
             console.error('Error loading journal rankings:', error);

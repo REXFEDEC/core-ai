@@ -6,19 +6,19 @@
     <script src="src/js/theme-init.js"></script>
     <title>FactorSphere - Transparent Journal Rankings</title>
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://factorsphere.github.io">
+    <meta property="og:url" content="https://factorsphere.github.io/core">
     <meta property="og:title" content="FactorSphere - Transparent Journal Rankings">
     <meta property="og:description" content="Community-driven academic journal rankings with transparent methodology and real-time updates.">
-    <meta property="og:image" content="https://factorsphere.github.io/src/img/tehe.jpg">
+    <meta property="og:image" content="https://factorsphere.github.io/core/src/img/tehe.jpg">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://factorsphere.github.io">
-    <meta property="twitter:title" content="FactorSphere - Transparent Journal Rankings">
-    <meta property="twitter:description" content="Community-driven academic journal rankings with transparent methodology and real-time updates.">
-    <meta property="twitter:image" content="https://factorsphere.github.io/src/img/tehe.jpg">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://factorsphere.github.io/core">
+    <meta name="twitter:title" content="FactorSphere - Transparent Journal Rankings">
+    <meta name="twitter:description" content="Community-driven academic journal rankings with transparent methodology and real-time updates.">
+    <meta name="twitter:image" content="https://factorsphere.github.io/core/src/img/tehe.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,9 @@
                 </div>
             </div>
             <div class="nav-links">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -47,48 +50,75 @@
         </nav>
     </header>
 
-    <main>
-        <section class="rankings-section">
-            <h2><i class="fas fa-chart-line"></i> Top Ranked Journals</h2>
-            <div class="rankings-grid">
-                <!-- Rankings will be populated here via JavaScript -->
+    <main class="home-page">
+        <section class="hero-section">
+            <div class="hero-content">
+                <img src="src/img/owl.png" alt="FactorSphere Owl" class="hero-owl">
+                <h1>Welcome to FactorSphere</h1>
+                <p class="hero-tagline">Democratizing academic journal rankings through transparency and community.</p>
+                <div class="hero-actions">
+                    <button id="heroSearchButton" class="search-button primary-button">
+                        <i class="fas fa-search"></i>
+                        Find Journals
+                    </button>
+                    <a href="src/ever/the_list.html" class="secondary-button">
+                        <i class="fas fa-list"></i>
+                        View Rankings
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section class="lists-section">
-            <h2><i class="fas fa-list"></i> Popular Lists</h2>
-            <div class="lists-grid">
-                <!-- Lists will be populated here via JavaScript -->
+        <div class="content-wrapper">
+            <section class="features-section">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Open Impact Factors</h3>
+                        <p>Transparent methodology using open-source data and community verification.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Comprehensive Data</h3>
+                        <p>Aggregated metrics from multiple trusted sources for informed decisions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Community Driven</h3>
+                        <p>Powered by researchers, for researchers, with real-time updates.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Coverage</h3>
+                        <p>Comprehensive journal database spanning all academic disciplines worldwide.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="rankings-container">
+                <section class="rankings-section">
+                    <h2>Top Ranked Journals</h2>
+                    <div class="rankings-grid">
+                        <!-- Top journals will be populated here by main.js -->
+                    </div>
+                </section>
+
+                <section class="lists-section">
+                    <h2>Most Cited Journals</h2>
+                    <div class="lists-grid">
+                        <!-- Most cited journals will be populated here by main.js -->
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer>
-        <p>OpenFactor is an open-source project. All data is community-contributed and verified.</p>
-        <p>Licensed under MIT License - <a href="https://github.com/FactorSphere/core">Contribute on GitHub</a></p>
-    </footer>
-
-    <template id="journalTemplate">
-        <div class="journal-card">
-            <h3 class="journal-title"></h3>
-            <div class="journal-meta">
-                <span class="issn"></span>
-                <span class="field"></span>
-            </div>
-            <div class="journal-metrics">
-                <div class="impact-score"></div>
-                <div class="citations"></div>
-                <div class="acceptance-rate"></div>
-            </div>
-            <div class="last-updated"></div>
-        </div>
-    </template>
-
+    <!-- Original search modal -->
     <div id="searchModal" class="search-modal">
         <div class="search-modal-content">
             <div class="search-modal-header">
                 <h2>Search Journals</h2>
-                <button class="close-modal">
+                <button id="closeModal" class="close-modal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -108,12 +138,34 @@
                     </select>
                 </div>
                 <div id="searchResults" class="search-results">
-                    <!-- Results will be populated here -->
+                    <!-- Results populated by main.js -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Original journal template -->
+    <template id="journalTemplate">
+        <div class="journal-card">
+            <h3 class="journal-title"></h3>
+            <div class="journal-meta">
+                <span class="issn"></span>
+                <span class="field"></span>
+            </div>
+            <div class="journal-metrics">
+                <div class="impact-score"></div>
+                <div class="citations"></div>
+                <div class="h-index"></div>
+            </div>
+            <div class="last-updated"></div>
+        </div>
+    </template>
+
     <script src="src/js/main.js"></script>
+    <script>
+        document.getElementById('heroSearchButton').addEventListener('click', () => {
+            document.getElementById('searchButton').click();
+        });
+    </script>
 </body>
 </html>
